@@ -5,12 +5,27 @@ body {
 div#main {
   width: 600px;
   margin: 50px auto;
-  background-color: #EEE;
+  background-color: #FFF;
   padding: 10%;
 }
-
-h2#result {
+div#ToDo-form {
+  width: 400px;
+  margin: 20px;
+  background-color: #EEE;
+  padding: 5px;
+}
+/*input#formButton {
+  margin: 0px auto;
+}*/
+.box {
+  width: 500px;
+  margin:20px;
+  background-color: #EEE;
+  padding: 5px;
+}
+/*h2#result {
   border: dashed 4px #AAA;
   background-color: #FFF;
   padding: 10px 20px;
 }
+*/

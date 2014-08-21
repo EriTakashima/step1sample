@@ -1,20 +1,29 @@
 <html>
 <head>
-  <title>生まれて何日</title>
+  <title>ToDo検索</title>
   <link rel="stylesheet" href="default.css">
 </head>
 <body>
-  <div id="main">
-    <h1>あなたの誕生日を入力してください</h1>
-    <h2 style="display: none" id="result"></h2>
-    <form method="post" onsubmit="calculateBirthday(); return false;">
-      <input type="number" id="year" name="year" value=2000>年
-      <input type="number" id="month" name="month" value=1 min=1 max=12>月
-      <input type="number" id="day" name="day" value=1 min=1 max=31>日
-      <input type="submit" value="この日が私の誕生日です">
-    </form>
-  </div>
-
-  <script type="text/javascript" src="birthday.js"></script>
+	  <div id="main">
+		 <h1>ToDoリスト</h1>
+		 <!--<h2 style="display: none" id="result"></h2>-->
+		 <div id="ToDo-form">
+		     <p>あたらしいToDoをつくる</p>
+		     <p><label>名前 <input id="formText" type="text" size="50"></label></p>
+			 <p> 最大文字数40字まで</p>
+		     <p><label>期限 <input id="formLimit" type="text" size="50"></label></p>
+			 <p> 入力例  2014/07/20/10：00</p>
+		     <input id="formButton" type="button" value="ToDoの追加">
+	      </div>
+		  <div id="ex" class="box">
+		     <p>ToDoはありません。ToDoを追加してください</p>
+			 <p>入力例</p>
+			 <p>名前 算数の宿題を１ページやる</p>
+			 <p>期限 2014/07/20/10：00</p>
+		  </div>
+		  <div id="list"></div>
+	  </div>
+	 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+     <script type="text/javascript" src="todo.js"></script>
 </body>
 </html>

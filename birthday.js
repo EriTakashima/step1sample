@@ -26,7 +26,7 @@ function calculateBirthday() {
   var birth = getBirthday();
 
   var diff = getDateDiff(birth, now);
-  var message = "あなたが生まれてから" + diff.days + "日になりました！！";
+  var message = "貴方が生まれてから" + diff.days + "日になりました";
 
   var result = document.getElementById("result");
   result.textContent = message;
