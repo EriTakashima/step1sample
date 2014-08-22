@@ -1,31 +1,33 @@
 body {
-  background-color: #222;
+	background-color: #FFFDFD;
+}
+div#main{
+	width: 600px;
+	margin: 50px auto;
 }
 
-div#main {
-  width: 600px;
-  margin: 50px auto;
-  background-color: #FFF;
-  padding: 10%;
+table{
+	border: 2px #c8c8cb  solid;
+	width: 500px;
 }
-div#ToDo-form {
-  width: 400px;
-  margin: 20px;
-  background-color: #EEE;
-  padding: 5px;
+table td{
+	border:0px;
 }
-/*input#formButton {
-  margin: 0px auto;
-}*/
-.box {
-  width: 500px;
-  margin:20px;
-  background-color: #EEE;
-  padding: 5px;
+#right{
+	text-align: right;
 }
-/*h2#result {
-  border: dashed 4px #AAA;
-  background-color: #FFF;
-  padding: 10px 20px;
+
+#formButton{
+	background-color: #b4ebfa;
+	padding: 20px;
+	border: 2px #c8c8cb  solid;
+	font-size: 1.4em;
+	/*以下三行でボタンの角を丸くする*/
+	-moz-border-radius: 5px; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	}
+#ex{
+	color: #ff2800;
+	font-weight: 700; 
 }
-*/

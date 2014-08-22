@@ -6,25 +6,28 @@ function loaded(){
   $("#formButton").click(
     // コールバックとしてメソッドを引数にわたす
     function() {
-	  $("#ex").remove();
+	  $("#ex").children.remove();
       saveText();
       showText();
     });
+	$("button").click(change_text);
 }
 // 入力された内容をローカルストレージに保存する
 function saveText() {
   // 時刻をキーにして入力されたテキストを保存する
   var text = $("#formText");
   var time = new Date();
-  localStorage.setItem(time, text.val());
+  var limit = $("#formLimit");
+  localStorage.setItem(time, text.val(),limit.val());
   // テキストボックスを空にする
   text.val("");
+  limit.val("");
 }
 
 // ローカルストレージに保存した値を再描画する
 function showText() {
   // すでにある要素を削除する
-  var list = $("#list")
+  var list = $("#list");
   list.children().remove();
   // ローカルストレージに保存された値すべてを要素に追加する
   var key, value, html = [];
@@ -36,11 +39,9 @@ function showText() {
   }
   list.append(html.join(''));
 }
-
-/*function change_text(){
-  //IDがmessageの要素のテキストを書き換え
-  $("#ex").remove();
-  console.log(now);
+function change_text(){
+console.log("aaaa");
+ $("#ex").text("ToDoはありません。ToDoを追加してください");
+localStorage.clear();
+console.log("bbbb");
 }
-*/
-//読み込み完了時に実行する関数を指定

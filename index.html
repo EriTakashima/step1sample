@@ -1,29 +1,26 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>ToDo検索</title>
   <link rel="stylesheet" href="default.css">
 </head>
 <body>
-	  <div id="main">
-		 <h1>ToDoリスト</h1>
+	<div id="main">
+		<p>ToDoリスト</p>
 		 <!--<h2 style="display: none" id="result"></h2>-->
-		 <div id="ToDo-form">
-		     <p>あたらしいToDoをつくる</p>
-		     <p><label>名前 <input id="formText" type="text" size="50"></label></p>
-			 <p> 最大文字数40字まで</p>
-		     <p><label>期限 <input id="formLimit" type="text" size="50"></label></p>
-			 <p> 入力例  2014/07/20/10：00</p>
-		     <input id="formButton" type="button" value="ToDoの追加">
-	      </div>
-		  <div id="ex" class="box">
-		     <p>ToDoはありません。ToDoを追加してください</p>
-			 <p>入力例</p>
-			 <p>名前 算数の宿題を１ページやる</p>
-			 <p>期限 2014/07/20/10：00</p>
-		  </div>
-		  <div id="list"></div>
-	  </div>
+		 <table>
+		 <table>
+			 <tr><td colspan="3">新しいToDoをつくる</td></tr>
+			 <tr><td id="right">ToDo名</td><td><input id="formText" type="text" size="40" placeholder="例：算数の宿題を1ページ進める"></td><td rowspan="2"> <input id="formButton" type="button" value="ToDoの追加"></td></tr>
+			 <tr><td id="right">期限 </td><td><input id="formLimit" type="text" size="40" placeholder="yyyy/mm/dd"></td></tr>
+		 </table>
+		 <button>click</button>
+		 <p id= "ex">ToDoはありません。ToDoを追加してください</p>
+		 
+		 <div id="list"></div>
+	</div>
 	 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
      <script type="text/javascript" src="todo.js"></script>
+	 
 </body>
 </html>
