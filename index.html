@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <title>ToDo検索</title>
@@ -11,15 +11,17 @@
 		 <table>
 		 <table>
 			 <tr><td colspan="3">新しいToDoをつくる</td></tr>
-			 <tr><td id="right">ToDo名</td><td><input id="formText" type="text" size="40" placeholder="例：算数の宿題を1ページ進める"></td><td rowspan="2"> <input id="formButton" type="button" value="ToDoの追加"></td></tr>
-			 <tr><td id="right">期限 </td><td><input id="formLimit" type="text" size="40" placeholder="yyyy/mm/dd"></td></tr>
-		 </table>
-		 <button>click</button>
-		 <p id= "ex">ToDoはありません。ToDoを追加してください</p>
+			 <tr><td id="right">ToDo名</td><td><input id="formText" type="text" size="40"maxlength="30" placeholder="例：算数の宿題を1ページ進める"></td><td rowspan="2"> <input id="formButton" type="button" value="ToDoの追加"></td></tr>
+			 <tr><td id="right">期限 </td><td><input id="formLimit" type="text" size="40" maxlength="30" placeholder="yyyy/mm/dd"></td></tr>
+			 <tr><td colspan="3"><div class = "red-bolder" id="warning"></div></td></tr>
+		</table>
+		<button>click</button>
+		 <p class = "red-bolder" id="ex">ToDoはありません。ToDoを追加してください</p>
 		 
 		 <div id="list"></div>
 	</div>
-	 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+	<script src="jquery-2.0.0.min.js"></script>
+	<!-- <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>-->
      <script type="text/javascript" src="todo.js"></script>
 	 
 </body>

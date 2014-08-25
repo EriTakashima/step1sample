@@ -9,6 +9,7 @@ div#main{
 table{
 	border: 2px #c8c8cb  solid;
 	width: 500px;
+	empty-cells: show;
 }
 table td{
 	border:0px;
@@ -27,7 +28,8 @@ table td{
     -webkit-border-radius: 5px;
     border-radius: 5px;
 	}
-#ex{
+
+.red-bolder{
 	color: #ff2800;
 	font-weight: 700; 
 }
