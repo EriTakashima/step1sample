@@ -22,6 +22,9 @@ table td#width{
 #right{
 	text-align: right;
 	}
+#title{
+	font-size: 2.0em;
+	}
 
 #formButton{
 	background-color: #b4ebfa;
