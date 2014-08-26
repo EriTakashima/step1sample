@@ -26,7 +26,7 @@ function saveText() {
 		 else if(t.val() !="") $("#warning").text("期限を入力してください");
 		 else $("#warning").text("ToDo名と期限を入力してください");
 		}
-	else{
+	 else{
 		 var o = false;
 		 var time = new Date();
 		 var key = time.getTime();
@@ -51,8 +51,8 @@ function saveText() {
 		 else{
 			 $("#warning").text("yyyy/mm/ddの形式にしたがって入力してください");
 			}
+		}
 	}
-}
 
 // ローカルストレージに保存した値を再描画する
 function showText() {
@@ -101,6 +101,7 @@ function showText() {
 		 $("#ex").text("ToDoはありません。ToDoを追加してください");
 		}
 	}
+	
 //完了未完了切り替えするための関数
 function OnOff(count,value,key){
 	 var onoff=document.getElementById(count);
