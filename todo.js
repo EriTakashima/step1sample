@@ -13,8 +13,7 @@ function loaded(){
 		}
 	);
 	 // clearボタンを押された時の挙動
-	$("button").click(clear_text);
-	//$("#finishButton").click(OnOff);
+	$("#clearButton").click(clear_text);
 }
 // 入力された内容をローカルストレージに保存する
 function saveText() {
@@ -35,6 +34,7 @@ function saveText() {
 		 onoff_classname: "finishButton unfinish"
 		}
 	 if(l.val().match(/^[0-9][0-9][0-9][0-9]\/[0-1]?[0-9]\/[0-3]?[0-9]$/)){
+		 console.log("if now");
 		 localStorage.setItem(key,JSON.stringify(data));
 		 // テキストボックスを空にする
 		 t.val("");
@@ -42,6 +42,7 @@ function saveText() {
 		}	
 	 else{
 		 $("#warning").text("yyyy/mm/ddの形式にしたがって入力してください");
+		  console.log("else now");
 		}
 }
 
@@ -71,13 +72,12 @@ function showText() {
 			 if(key == line[i]){
 					 break;
 				}
-				
 			}
 		 value = JSON.parse(localStorage.getItem(key));
 		// value = value.sort(sortNumber); 
 		 html.push(
 			 '<table id="list">'+
-				 '<tr><td colspan="2"><p  class="bolder">'+value.text+'</p></td><td rowspan="3"> <input  id="' + count+ '"type="button" class="'+value.onoff_classname+'" value="'+value.onoff_val+'"></td></tr>'+
+				 '<tr><td colspan="2" id="width"><p  class="bolder">'+value.text+'</p></td><td rowspan="3"> <input  id="' + count+ '"type="button" class="'+value.onoff_classname+'" value="'+value.onoff_val+'"></td></tr>'+
 				 '<tr><td><p class="listShow">期限： </p></td><td><p class="listShow">'+ value.limit +'</p></td>'+
 				 '<tr><td><p class="listShow">作成日： </p></td><td><p class="listShow">'+value.year+'/'+value.month+'/'+value.day+'</p></td></tr>'+
 			 '</table>'

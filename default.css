@@ -16,6 +16,9 @@ table#list{
 table td{
 	border:0px;
 	}
+table td#width{
+	width:300px;
+	}
 #right{
 	text-align: right;
 	}
@@ -41,9 +44,19 @@ table td{
     -webkit-border-radius: 5px;
     border-radius: 5px;
 	}
+#clearButton{
+	background-color: #ffff99;
+	margin: 10px;
+	padding: 5px;
+	border: 2px #c8c8cb  solid;
+	/*以下三行でボタンの角を丸くする*/
+	-moz-border-radius: 5px; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	}
 	
 .finish{
-	background-color: #c7b2de;
+	background-color: #cbf266;
 	}
 	
 .unfinish{
