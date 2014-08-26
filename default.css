@@ -44,7 +44,7 @@ table td#width{
     -webkit-border-radius: 5px;
     border-radius: 5px;
 	}
-#clearButton{
+.clear{
 	background-color: #ffff99;
 	margin: 10px;
 	padding: 5px;

@@ -82,17 +82,19 @@ function showText() {
 				}
 			}
 		 value = JSON.parse(localStorage.getItem(key));
+		 var clear_count = "clear"+count;
 		// htmlに表示する
 		 html.push(
 			 '<table id="list">'+
-				 '<tr><td colspan="2" id="width"><p  class="bolder">'+value.text+'</p></td><td rowspan="3"> <input  id="' + count+ '"type="button" class="'+value.onoff_classname+'" value="'+value.onoff_val+'"></td></tr>'+
+				 '<tr><td colspan="2" id="width"><p  class="bolder">'+value.text+'</p></td><td rowspan="2"> <input  id="' + count+ '"type="button" class="'+value.onoff_classname+'" value="'+value.onoff_val+'"></td></tr>'+
 				 '<tr><td><p class="listShow">期限： </p></td><td><p class="listShow">'+ value.limit +'</p></td>'+
-				 '<tr><td><p class="listShow">作成日： </p></td><td><p class="listShow">'+value.year+'/'+value.month+'/'+value.day+'</p></td></tr>'+
+				 '<tr><td><p class="listShow">作成日： </p></td><td><p class="listShow">'+value.year+'/'+value.month+'/'+value.day+'</p></td><td><input  id="' + clear_count+ '"type="button" class="clear" value="消去"></td></tr>'+
 			 '</table>'
 			); 
 		 list.append(html.join(''));
 		 //完了未完了切り替え
 		 OnOff(count,value,key);
+		 clear_list(clear_count,key);
 		 count++;
 		 flag = true;
 		}
@@ -118,6 +120,13 @@ function OnOff(count,value,key){
 			 change_data(value,value.onoff_val,value.onoff_classname,key);			 
 			 showText();
 			}
+		}
+	}
+function clear_list(clear_count,key){
+	 var onoff=document.getElementById(clear_count);
+	 onoff.onclick=function(){
+		 localStorage.removeItem(key);	
+		 showText();
 		}
 	}
 	
