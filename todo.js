@@ -20,30 +20,38 @@ function saveText() {
 	  // 時刻をキーにして入力されたテキストを保存する
 	 var t = $("#formText");
 	 var l = $("#formLimit");
-	 var o = false;
-	 var time = new Date();
-	 var key = time.getTime();
-	 var data = {
-		 text : escapeText(t.val()) ,
-		 limit : escapeText(l.val()) ,
-		 onoff : o,
-		 year: time.getFullYear(),
-		 month: time.getMonth()+1,
-		 day: time.getDate(),
-		 onoff_val: "未定義",
-		 onoff_classname: "finishButton unfinish"
+	 //何もToDo名や期限に入力されなかった時エラー文を出力
+	 if(t.val() == "" || l.val()== ""){;
+		 if (l.val() !="") $("#warning").text("ToDo名を入力してください");
+		 else if(t.val() !="") $("#warning").text("期限を入力してください");
+		 else $("#warning").text("ToDo名と期限を入力してください");
 		}
-	 if(l.val().match(/^[0-9][0-9][0-9][0-9]\/[0-1]?[0-9]\/[0-3]?[0-9]$/)){
-		 console.log("if now");
-		 localStorage.setItem(key,JSON.stringify(data));
-		 // テキストボックスを空にする
-		 t.val("");
-		 l.val("");
-		}	
-	 else{
-		 $("#warning").text("yyyy/mm/ddの形式にしたがって入力してください");
-		  console.log("else now");
-		}
+	else{
+		 var o = false;
+		 var time = new Date();
+		 var key = time.getTime();
+		 //リストを管理するオブジェクト
+		 var data = {
+			 text : escapeText(t.val()) ,
+			 limit : escapeText(l.val()) ,
+			 onoff : o,
+			 year: time.getFullYear(),
+			 month: time.getMonth()+1,
+			 day: time.getDate(),
+			 onoff_val: "未定義",
+			 onoff_classname: "finishButton unfinish"
+			}
+		 //期限が正しく入力されているかチェック
+		 if(l.val().match(/^[0-9][0-9][0-9][0-9]\/[0-1]?[0-9]\/[0-3]?[0-9]$/)){
+			 localStorage.setItem(key,JSON.stringify(data));
+			 // テキストボックスを空にする
+			 t.val("");
+			 l.val("");
+			}	
+		 else{
+			 $("#warning").text("yyyy/mm/ddの形式にしたがって入力してください");
+			}
+	}
 }
 
 // ローカルストレージに保存した値を再描画する
@@ -51,9 +59,9 @@ function showText() {
 	 // すでにある要素を削除する
 	 var list = $("#list");
 	 list.children().remove();
-	 // ローカルストレージに保存された値すべてを要素に追加する
 	 var count = 0;
 	 var flag = false;
+	 //リストを入力された順番に並べ替える
 	 for(var i=0, len=localStorage.length; i<len; i++) {
 		 var key, value, html = [],line=[localStorage.length];
 		 for(k=0;k<len;k++){
@@ -74,7 +82,7 @@ function showText() {
 				}
 			}
 		 value = JSON.parse(localStorage.getItem(key));
-		// value = value.sort(sortNumber); 
+		// htmlに表示する
 		 html.push(
 			 '<table id="list">'+
 				 '<tr><td colspan="2" id="width"><p  class="bolder">'+value.text+'</p></td><td rowspan="3"> <input  id="' + count+ '"type="button" class="'+value.onoff_classname+'" value="'+value.onoff_val+'"></td></tr>'+
@@ -83,20 +91,17 @@ function showText() {
 			 '</table>'
 			); 
 		 list.append(html.join(''));
+		 //完了未完了切り替え
 		 OnOff(count,value,key);
 		 count++;
 		 flag = true;
 		}
+	 //リストに何も入っていない時にエラー文を表示
 	 if(flag == false){
 		 $("#ex").text("ToDoはありません。ToDoを追加してください");
 		}
 	}
-
-function sortNumber(a,b){
-return (a - b);
-}
-	
-	
+//完了未完了切り替えするための関数
 function OnOff(count,value,key){
 	 var onoff=document.getElementById(count);
 	 onoff.onclick=function(){
@@ -114,7 +119,8 @@ function OnOff(count,value,key){
 			}
 		}
 	}
-
+	
+//リストの中を並べ替えるための関数
 function change_data(value,val,classname,key){
 	 var k=key;
 	 var t = value.text;
@@ -137,14 +143,15 @@ function change_data(value,val,classname,key){
 	 localStorage.setItem(k,JSON.stringify(data));
 	}
 
+//リストを全部バルス！
 function clear_text(){
-	 //バルス！
 	 localStorage.clear();
 	 showText();
 	 count = 0;
 	 $("#ex").text("ToDoはありません。ToDoを追加してください");
 	}
-
+	
+//html入力されたらエスケープ
 function escapeText(text) {
 	 return $("<div>").text(text).html();
 	}
