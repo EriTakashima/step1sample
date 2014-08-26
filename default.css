@@ -1,22 +1,24 @@
 body {
 	background-color: #FFFDFD;
-}
+	}
 div#main{
 	width: 600px;
 	margin: 50px auto;
-}
+	}
 
 table{
 	border: 2px #c8c8cb  solid;
 	width: 500px;
-	empty-cells: show;
-}
+	}
+table#list{
+	padding: 0px;
+	}
 table td{
 	border:0px;
-}
+	}
 #right{
 	text-align: right;
-}
+	}
 
 #formButton{
 	background-color: #b4ebfa;
@@ -28,11 +30,33 @@ table td{
     -webkit-border-radius: 5px;
     border-radius: 5px;
 	}
-
+	
+.finishButton{
+	width :100px;
+	padding: 20px;
+	border: 2px #c8c8cb  solid;
+	font-size: 1.4em;
+	/*以下三行でボタンの角を丸くする*/
+	-moz-border-radius: 5px; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	}
+	
+.finish{
+	background-color: #c7b2de;
+	}
+	
+.unfinish{
+	background-color: #ffd1d1;
+	}
 .red{
 	color: #ff2800;
-}
+	}
 .bolder{
 	font-weight: 700;
-}
+	}
+.listShow{
+	color: #7f878f;
+	font-size: 0.8em;
+	}
  
