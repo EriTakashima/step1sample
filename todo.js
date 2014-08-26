@@ -1,18 +1,18 @@
 ﻿$(loaded);
+
 function loaded(){
-// console.log(now);
-	  if(showText() == false){
-		  $("#ex").text("ToDoはありません。ToDoを追加してください");
+	 showText();
+     // todoの追加ボタンを押された時の挙動
+     $("#formButton").click(
+		 // コールバックとしてメソッドを引数にわたす
+		 function() {
+			 $("#ex").text("");
+			 $("#warning").text("");
+			 saveText();
+			 showText();
 		 }
-  // ボタンをクリックしたときに実行するイベントを設定する
-  $("#formButton").click(
-    // コールバックとしてメソッドを引数にわたす
-    function() {
-	 $("#ex").text("");
-	 $("#warning").text("");
-     saveText();
-     showText();
-    });
+	 );
+	 // clearボタンを押された時の挙動
 	$("button").click(clear_text);
 }
 // 入力された内容をローカルストレージに保存する
@@ -23,9 +23,11 @@ function saveText() {
 	 var time = new Date();
 	 var data = {
 		 text : escapeText(t.val()) ,
-		 limit : escapeText(l.val()) }
-
-	 if(l.val().match(/^[0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]$/)){
+		 limit : escapeText(l.val()) 
+		 }
+		 console.log("t.val "+t.val());
+		 console.log("l.val "+l.val());
+	 if(l.val().match(/^[0-9][0-9][0-9][0-9]\/[0-1]?[0-9]\/[0-3]?[0-9]$/)){
 		 localStorage.setItem(time, JSON.stringify(data));
 		 // テキストボックスを空にする
 		 t.val("");
@@ -43,6 +45,7 @@ function showText() {
 	 list.children().remove();
 	 // ローカルストレージに保存された値すべてを要素に追加する
 	 var key, value, html = [];
+	 var flag = false;
 	 for(var i=0, len=localStorage.length; i<len; i++) {
 		 key = localStorage.key(i);
 		 value = JSON.parse(localStorage.getItem(key));
@@ -54,15 +57,11 @@ function showText() {
 			 "</table>"+
 			 "</div>"
 			);
+		 flag = true;
 		}
 	 list.append(html.join(''));
-	 if(localStorage.length > 0){
-		 console.log("true");
-		 return(true);
-		 }
-	 else{
-		 console.log("false");
-		 return(false);
+	 if(flag == false){
+		 $("#ex").text("ToDoはありません。ToDoを追加してください");
 		 }
 }
 
