@@ -29,7 +29,10 @@ table td{
     border-radius: 5px;
 	}
 
-.red-bolder{
+.red{
 	color: #ff2800;
-	font-weight: 700; 
 }
+.bolder{
+	font-weight: 700;
+}
+ 
