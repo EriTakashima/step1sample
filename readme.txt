@@ -1,4 +1,11 @@
-﻿名称：ToDoリスト
+﻿課題は全部で5つのファイルで構成されています
+index.html
+default.css
+todo.js
+readme.txt
+テストデータ.txt
+
+名称：ToDoリスト
 
 機能：ToDoリストを作成出来るwebアプリケーション
 
