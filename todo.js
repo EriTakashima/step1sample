@@ -15,6 +15,7 @@ function loaded(){
 	 // clearボタンを押された時の挙動
 	$("#clearButton").click(clear_text);
 }
+
 // 入力された内容をローカルストレージに保存する
 function saveText() {
 	  // 時刻をキーにして入力されたテキストを保存する
@@ -43,10 +44,14 @@ function saveText() {
 			}
 		 //期限が正しく入力されているかチェック
 		 if(l.val().match(/^[0-9][0-9][0-9][0-9]\/[0-1]?[0-9]\/[0-3]?[0-9]$/)){
-			 localStorage.setItem(key,JSON.stringify(data));
-			 // テキストボックスを空にする
-			 t.val("");
-			 l.val("");
+			 var check;
+			 check = check_limit(l.val());
+			 if(check == 0) {
+				 localStorage.setItem(key,JSON.stringify(data));
+				 // テキストボックスを空にする
+				 t.val("");
+				 l.val("");
+				}
 			}	
 		 else{
 			 $("#warning").text("yyyy/mm/ddの形式にしたがって入力してください");
@@ -104,6 +109,20 @@ function showText() {
 		}
 	}
 	
+function check_limit(limit){
+	 var l;
+	 l = limit.split("/");
+	 if(Number( l[1] ) < 1 || Number( l[1] ) > 12) {
+		 $("#warning").text("正しい月を入力してください");
+		 return 1;
+		}
+	 if(Number( l[2] ) < 1 || Number( l[2] ) > 31) {
+		 $("#warning").text("正しい日付を入力してください");
+		 return 1;
+		}
+	 return 0;
+}
+	
 //完了未完了切り替えするための関数
 function OnOff(count,value,key){
 	 var onoff=document.getElementById(count);
@@ -122,6 +141,7 @@ function OnOff(count,value,key){
 			}
 		}
 	}
+	
 function clear_list(clear_count,key){
 	 var onoff=document.getElementById(clear_count);
 	 onoff.onclick=function(){
